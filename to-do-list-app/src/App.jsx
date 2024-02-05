@@ -4,6 +4,7 @@ import store from './store/store';
 import { Provider } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import TodoList from './pages/TodoList';
+import Todo from './components/Todo';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Homepage></Homepage>}></Route>
         <Route path='/todolist' element={<TodoList></TodoList>}></Route>
+        <Route path='/todo/:taskId' element={<Todo></Todo>}></Route>
       </Routes>
     </Provider>
   );

@@ -11,8 +11,8 @@ const AddName = () => {
   const handleClick = () => {
     if (userNameRef.current.value !== '') {
       dispatch(setUsername(userNameRef.current.value));
+      userNameRef.current.value = '';
     }
-    //console.log(userNameRef.current.value);
   };
 
   return (
@@ -22,6 +22,7 @@ const AddName = () => {
         type='text'
         ref={userNameRef}
         className='border border-indigo-300 rounded-full px-2 mr-3'
+        placeholder='Write your name'
       />
       <Button
         onClick={handleClick}

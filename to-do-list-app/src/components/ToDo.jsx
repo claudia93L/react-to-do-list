@@ -1,5 +1,5 @@
-const ToDo = () => {
+const Todo = () => {
   return <></>;
 };
 
-export default ToDo;
+export default Todo;
