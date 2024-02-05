@@ -1,5 +1,11 @@
+import AddName from '../components/AddName';
+
 const ToDoList = () => {
-  return <>todolist</>;
+  return (
+    <div>
+      <AddName></AddName>
+    </div>
+  );
 };
 
 export default ToDoList;

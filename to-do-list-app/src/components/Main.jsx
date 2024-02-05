@@ -21,9 +21,9 @@ const Main = () => {
           </p>
           <Link to={'/todolist'}>
             <Button
-              className={
-                'bg-indigo-600 rounded-md py-2 px-4 text-white transition ease-in-out hover:bg-indigo-700 hover:scale-90'
-              }
+              className=
+              'bg-indigo-600 rounded-md py-2 px-4 text-white transition ease-in-out hover:bg-indigo-700 hover:scale-90'
+              
             >
               Get started
             </Button>
