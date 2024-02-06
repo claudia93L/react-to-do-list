@@ -10,6 +10,7 @@ const tasksSlice = createSlice({
       const newTask = {
         id: action.payload.id,
         name: action.payload.name,
+        color: action.payload.color,
         todos: [],
       };
       state.tasks.push(newTask);

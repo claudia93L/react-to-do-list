@@ -22,6 +22,14 @@ const TaskBoard = () => {
     return randomID;
   };
 
+  const generateRandomColor = () => {
+    const red = Math.floor(Math.random() * 256);
+    const green = Math.floor(Math.random() * 256);
+    const blue = Math.floor(Math.random() * 256);
+
+    return `rgb(${red},${green},${blue})`;
+  };
+
   const handleClick = () => {
     if (taskNameRef.current.value !== '') {
       dispatch(
@@ -29,6 +37,7 @@ const TaskBoard = () => {
           id: checkID(),
           name: taskNameRef.current.value,
           todos: [],
+          color: generateRandomColor(),
         })
       );
       taskNameRef.current.value = '';
