@@ -1,8 +1,33 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Button from './Button';
+import { editTask, deleteTask } from '../reducers/tasksReducer';
+import { useState, useRef } from 'react';
 
 const Task = () => {
   const tasks = useSelector((state) => state.tasks.tasks);
+  const dispatch = useDispatch();
+  const [editTaskId, setEditTaskId] = useState(null);
+  const newTaskNameRef = useRef(null);
+
+  const handleEdit = (taskId) => {
+    setEditTaskId(taskId); // Imposta l'ID del task attualmente in modifica
+  };
+
+  const handleSave = (taskId) => {
+    if (newTaskNameRef.current && newTaskNameRef.current.value !== '') {
+      dispatch(
+        editTask({
+          taskId: editTaskId,
+          taskName: newTaskNameRef.current.value,
+        })
+      );
+      setEditTaskId(null); // Deseleziona il task corrente
+    }
+  };
+
+  const handleDelete = (taskId) => {
+    dispatch(deleteTask(taskId));
+  };
 
   return (
     <div>
@@ -10,21 +35,51 @@ const Task = () => {
         return (
           <div
             style={{ backgroundColor: task.color }}
-            className='py-5 px-2 rounded'
+            className='py-2 px-2 rounded flex justify-evenly rounded'
             key={task.id}
           >
-            <h1>{task.name}</h1>
-            <Button className='bg-green-400 rounded-full text-white transition ease-in-out hover:bg-green-500 p-2 border border-green-900'>
-              <img
-                className='w-5'
-                src='../../src/assets/icons/edit.png'
-                alt='Edit icon'
-              />
-            </Button>
+            {editTaskId !== task.id ? (
+              <span>{task.name}</span>
+            ) : (
+              <input
+                ref={newTaskNameRef}
+                type='text'
+                defaultValue={task.name}
+                disabled={editTaskId !== task.id} // disabilita l'input se non è in modifica
+                className='h-6 px-2 rounded-full mt-1'
+              ></input>
+            )}
 
-            <Button className='bg-red-400 rounded-full text-white transition ease-in-out hover:bg-red-500 p-2 border border-red-900'>
+            {editTaskId !== task.id ? (
+              <Button
+                onClick={() => handleEdit(task.id)}
+                className='bg-yellow-400 rounded-full text-white transition ease-in-out hover:bg-yellow-500 p-2 border border-yellow-600'
+              >
+                <img
+                  className='w-3'
+                  src='../../src/assets/icons/edit.png'
+                  alt='Edit icon'
+                />
+              </Button>
+            ) : (
+              <Button
+                onClick={() => handleSave(task.id)}
+                className='bg-green-400 rounded-full text-white transition ease-in-out hover:bg-green-500 p-2 border border-green-900'
+              >
+                <img
+                  className='w-3'
+                  src='../../src/assets/icons/check.png'
+                  alt='Edit icon'
+                />
+              </Button>
+            )}
+
+            <Button
+              onClick={() => handleDelete(task.id)}
+              className='bg-red-400 rounded-full text-white transition ease-in-out hover:bg-red-500 p-2 border border-red-900'
+            >
               <img
-                className='w-5'
+                className='w-3'
                 src='../../src/assets/icons/delete.png'
                 alt='Delete icon'
               />

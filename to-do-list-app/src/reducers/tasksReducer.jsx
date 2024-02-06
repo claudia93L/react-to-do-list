@@ -26,7 +26,7 @@ const tasksSlice = createSlice({
     },
     removeTodoFromTask: (state, action) => {
       const { taskId, todoId } = action.payload;
-      const task = state.tasks.find((task) => task.id === taskId);
+      const task = state.tasks.findIndex((task) => task.id === taskId);
 
       if (task) {
         task.todos = task.todos.filter((todo) => todo.id !== todoId);
@@ -35,8 +35,22 @@ const tasksSlice = createSlice({
     deleteTask: (state, action) => {
       state.tasks = state.tasks.filter((task) => task.id !== action.payload);
     },
+    editTask: (state, action) => {
+      const { taskId, taskName } = action.payload;
+      const taskIndex = state.tasks.find((task) => task.id === taskId);
+
+      if (taskIndex !== -1) {
+        state.tasks[taskIndex].name = taskName;
+      }
+    },
   },
 });
 
-export const { addTask, deleteTask } = tasksSlice.actions;
+export const {
+  addTask,
+  editTask,
+  deleteTask,
+  addTodoToTask,
+  removeTodoFromTask,
+} = tasksSlice.actions;
 export default tasksSlice.reducer;
