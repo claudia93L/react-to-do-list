@@ -1,16 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
-const generateUniqueID = require('generate-unique-id');
 
 const tasksSlice = createSlice({
   name: 'tasks',
   initialState: {
-    todos: [],
+    tasks: [],
   },
   reducers: {
     addTask: (state, action) => {
       const newTask = {
-        id: generateUniqueID(),
-        name: action.payload.desc,
+        id: action.payload.id,
+        name: action.payload.name,
         todos: [],
       };
       state.tasks.push(newTask);
@@ -18,9 +17,10 @@ const tasksSlice = createSlice({
     addTodoToTask: (state, action) => {
       const { taskId, todoDesc } = action.payload;
       const task = state.tasks.find((task) => task.id === taskId);
+      const randomId = Math.floor(Math.random() * 10000);
 
       if (task) {
-        task.todos.push({ desc: todoDesc });
+        task.todos.push({ id: randomId, desc: todoDesc });
       }
     },
     removeTodoFromTask: (state, action) => {
@@ -30,9 +30,9 @@ const tasksSlice = createSlice({
       if (task) {
         task.todos = task.todos.filter((todo) => todo.id !== todoId);
       }
-      deleteTask: (state, action) => {
-        state.tasks = state.tasks.filter((task) => task.id !== action.payload);
-      };
+    },
+    deleteTask: (state, action) => {
+      state.tasks = state.tasks.filter((task) => task.id !== action.payload);
     },
   },
 });
