@@ -17,7 +17,7 @@ const AddName = () => {
 
   return (
     <div className='text-center'>
-      <h2>
+      <h2 className='text-2xl'>
         Welcome...
         {!usernameRedux ? (
           <span>

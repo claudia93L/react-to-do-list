@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRef } from 'react';
 import { addTask } from '../reducers/tasksReducer';
 
-
 const TaskBoard = () => {
   const dispatch = useDispatch();
   const tasksRedux = useSelector((state) => state.tasks.tasks);
@@ -48,12 +47,12 @@ const TaskBoard = () => {
   return (
     <>
       <div className='w-64'>
-        <p className='text-sm'>Create your task boards.</p>
+        <p className='text-xs text-gray-600 mb-3'>Create your task boards.</p>
         <input
           type='text'
           placeholder='Task name'
           ref={taskNameRef}
-          className='opacity-75 rounded-full mr-3 h-6 px-3'
+          className='opacity-75 rounded-full mr-5 h-6 px-3'
         />
         <Button
           className='bg-indigo-300 rounded-full text-white transition ease-in-out hover:bg-indigo-400 p-2'

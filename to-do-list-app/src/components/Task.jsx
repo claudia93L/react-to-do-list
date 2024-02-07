@@ -37,12 +37,12 @@ const Task = () => {
   };
 
   return (
-    <div>
+    <div className='mt-5'>
       {tasks.map((task) => {
         return (
           <div
             style={{ backgroundColor: task.color }}
-            className='py-2 px-2 rounded flex justify-evenly rounded opacity-80'
+            className='py-5 px-2 rounded flex justify-evenly rounded opacity-80 mb-5'
             key={task.id}
           >
             {editTaskId !== task.id ? (
