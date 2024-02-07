@@ -24,9 +24,9 @@ const AddName = () => {
             <input
               type='text'
               ref={userNameRef}
-              className='border border-indigo-300 rounded-full px-2 mr-3 w-24'
+              className='border border-indigo-300 rounded-full px-2 mr-3 w-24 opacity-75 ml-3'
               defaultValue={usernameRedux}
-              placeholder='Write your name'
+              placeholder='your name'
             />
             <Button
               onClick={handleClick}

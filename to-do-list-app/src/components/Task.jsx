@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Button from './Button';
 import { editTask, deleteTask } from '../reducers/tasksReducer';
 import { useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 const Task = () => {
   const tasks = useSelector((state) => state.tasks.tasks);
@@ -36,19 +37,20 @@ const Task = () => {
           <div
             style={{ backgroundColor: task.color }}
             className='py-2 px-2 rounded flex justify-evenly rounded'
-            key={task.id}
           >
-            {editTaskId !== task.id ? (
-              <span>{task.name}</span>
-            ) : (
-              <input
-                ref={newTaskNameRef}
-                type='text'
-                defaultValue={task.name}
-                disabled={editTaskId !== task.id} // disabilita l'input se non è in modifica
-                className='h-6 px-2 rounded-full mt-1'
-              ></input>
-            )}
+            <Link to={`/todolist/${task.id}`}>
+              {editTaskId !== task.id ? (
+                <span className='w-40 mt-1 px-2 '>{task.name}</span>
+              ) : (
+                <input
+                  ref={newTaskNameRef}
+                  type='text'
+                  defaultValue={task.name}
+                  disabled={editTaskId !== task.id} // disabilita l'input se non è in modifica
+                  className='h-6 px-3 rounded-full mt-1 w-40 opacity-75'
+                ></input>
+              )}
+            </Link>
 
             {editTaskId !== task.id ? (
               <Button

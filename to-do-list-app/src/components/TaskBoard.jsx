@@ -46,10 +46,14 @@ const TaskBoard = () => {
 
   return (
     <>
-     
-      <div>
+      <div className='w-64'>
         <p className='text-sm'>Create your task boards.</p>
-        <input type='text' placeholder='Task name' ref={taskNameRef} />
+        <input
+          type='text'
+          placeholder='Task name'
+          ref={taskNameRef}
+          className='opacity-75 rounded-full mr-3 h-6 px-3'
+        />
         <Button
           className='bg-indigo-300 rounded-full text-white transition ease-in-out hover:bg-indigo-400 p-2'
           onClick={handleClick}
