@@ -35,20 +35,20 @@ const Todo = () => {
 
   return (
     <>
-      <div className='my-5 px-10 flex flex-col justify-center '>
+      <div className='my-5 px-10 flex flex-col'>
         <Header path='/todolist'></Header>
         {task && (
           <div
             key={task.id}
-            className='h-50 rounded p-3 flex justify-center flex-col opacity-80'
+            className='h-50 rounded p-3 flex-col opacity-80'
             style={{ backgroundColor: task.color }}
           >
             <h3 className='text-2xl text-center'>{task.name}</h3>
-            <span>
+            <span className='flex flex-row justify-end mb-2'>
               <input
                 ref={todoDescRef}
                 type='text'
-                className='h-6 px-3 rounded-full mt-1  opacity-75 mr-3'
+                className='h-6 px-3 rounded-full mt-1 opacity-65 mr-3 w-full'
                 placeholder='Add new task'
               ></input>
               <Button
@@ -58,23 +58,24 @@ const Todo = () => {
                 <img
                   className='w-3'
                   src='../../src/assets/icons/add.png'
-                  alt='Edit icon'
+                  alt='Add icon'
                 />
               </Button>
             </span>
             <div className='list-none mx-0 flex flex-col'>
               {toDos.map((todo, index) => (
-                <div className='flex flex-row justify-between' key={index}>
+                <div className='flex flex-row justify-between my-1' key={index}>
                   <span>
-                    <input
+                    <li>{todo}</li>
+                    {/*  <input
                       className='rounded-full bg-transparent checked:bg-indigo-800 focus:bg-indigo-800 border border-white active:bg-indigo-800'
                       type='checkbox'
                       name={todo}
                       value={todo}
                     />
-                    <label htmlFor={todo}>{todo}</label>
+                    <label htmlFor={todo}>{todo}</label> */}
                   </span>
-                  <Button onClick={() => handleDelete(index)}>
+                  <Button className='mr-1' onClick={() => handleDelete(index)}>
                     <img
                       className='w-4'
                       src='../../src/assets/icons/delete.png'
