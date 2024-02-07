@@ -4,19 +4,19 @@ import Header from './Header';
 
 const Todo = () => {
   const tasks = useSelector((state) => state.tasks.tasks);
-  const taskID = useParams();
+  const { taskID } = useParams();
+  const task = tasks.find((task) => task.id === parseInt(taskID));
 
   return (
     <>
-      <Header path='/todolist'></Header>
-      {tasks.map((task) => {
-        task.id ===
-          taskID(
-            <div>
-              funziono! l'id dall'url è {taskID} l'id filtrato è {task}
-            </div>
-          );
-      })}
+      <div className='my-5 px-10 flex flex-col justify-center'>
+        <Header path='/todolist'></Header>
+        {task && (
+          <div key={task.id}>
+            funziono! l'id dall'url l'id filtrato è {task.id}
+          </div>
+        )}
+      </div>
     </>
   );
 };

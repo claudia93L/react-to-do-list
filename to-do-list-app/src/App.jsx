@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Homepage></Homepage>}></Route>
         <Route path='/todolist' element={<TodoList></TodoList>}></Route>
-        <Route path='/todolist/:taskId' element={<Todo></Todo>}></Route>
+        <Route path='/todolist/:taskID' element={<Todo></Todo>}></Route>
       </Routes>
     </Provider>
   );

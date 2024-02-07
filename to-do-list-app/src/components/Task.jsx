@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Button from './Button';
 import { editTask, deleteTask } from '../reducers/tasksReducer';
 import { useState, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Task = () => {
   const tasks = useSelector((state) => state.tasks.tasks);
