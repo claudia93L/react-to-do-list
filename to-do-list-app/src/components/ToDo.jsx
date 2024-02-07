@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Header from './Header';
 import Button from './Button';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { addTodoToTask, removeTodoFromTask } from '../reducers/tasksReducer';
 
 const Todo = () => {
@@ -67,7 +67,7 @@ const Todo = () => {
                 <div className='flex flex-row justify-between' key={index}>
                   <span>
                     <input
-                      className='rounded-full'
+                      className='rounded-full bg-transparent checked:bg-indigo-800 focus:bg-indigo-800 border border-white active:bg-indigo-800'
                       type='checkbox'
                       name={todo}
                       value={todo}
