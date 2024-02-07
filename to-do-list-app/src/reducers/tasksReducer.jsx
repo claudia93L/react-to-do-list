@@ -37,10 +37,10 @@ const tasksSlice = createSlice({
     },
     editTask: (state, action) => {
       const { taskId, taskName } = action.payload;
-      const taskIndex = state.tasks.find((task) => task.id === taskId);
+      const task = state.tasks.find((task) => task.id === taskId);
 
-      if (taskIndex !== -1) {
-        state.tasks[taskIndex].name = taskName;
+      if (task) {
+        task.name = taskName;
       }
     },
   },
