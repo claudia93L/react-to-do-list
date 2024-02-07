@@ -42,7 +42,7 @@ const Task = () => {
         return (
           <div
             style={{ backgroundColor: task.color }}
-            className='py-2 px-2 rounded flex justify-evenly rounded'
+            className='py-2 px-2 rounded flex justify-evenly rounded opacity-80'
             key={task.id}
           >
             {editTaskId !== task.id ? (

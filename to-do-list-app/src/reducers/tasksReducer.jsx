@@ -18,18 +18,17 @@ const tasksSlice = createSlice({
     addTodoToTask: (state, action) => {
       const { taskId, todoDesc } = action.payload;
       const task = state.tasks.find((task) => task.id === taskId);
-      const randomId = Math.floor(Math.random() * 10000);
 
       if (task) {
-        task.todos.push({ id: randomId, desc: todoDesc });
+        task.todos.push(todoDesc);
       }
     },
     removeTodoFromTask: (state, action) => {
-      const { taskId, todoId } = action.payload;
-      const task = state.tasks.findIndex((task) => task.id === taskId);
+      const { taskId, todoIndex } = action.payload;
+      const taskIndex = state.tasks.findIndex((task) => task.id === taskId);
 
-      if (task) {
-        task.todos = task.todos.filter((todo) => todo.id !== todoId);
+      if (taskIndex !== -1) {
+        state.tasks[taskIndex].todos.splice(todoIndex, 1);
       }
     },
     editTask: (state, action) => {
