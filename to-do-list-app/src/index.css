@@ -7,6 +7,16 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  background: rgb(221, 208, 254);
+  background: linear-gradient(
+    198deg,
+    rgb(209, 208, 254) 7%,
+    rgba(255, 255, 255, 1) 28%,
+    rgba(255, 255, 255, 1) 45%,
+    rgba(255, 255, 255, 1) 62%,
+    rgba(209, 208, 254, 1) 85%
+  );
+  min-height: 100vh;
 }
 
 a {

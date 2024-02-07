@@ -45,22 +45,25 @@ const TaskBoard = () => {
   };
 
   return (
-    <div>
-      <p className='text-sm'>Create your task boards.</p>
-      <input type='text' placeholder='Task name' ref={taskNameRef} />
-      <Button
-        className='bg-indigo-300 rounded-full text-white transition ease-in-out hover:bg-indigo-400 p-2'
-        onClick={handleClick}
-      >
-        <img
-          className='w-5'
-          src='../../src/assets/icons/add.png'
-          alt='Plus icon'
-        />
-      </Button>
+    <>
+     
+      <div>
+        <p className='text-sm'>Create your task boards.</p>
+        <input type='text' placeholder='Task name' ref={taskNameRef} />
+        <Button
+          className='bg-indigo-300 rounded-full text-white transition ease-in-out hover:bg-indigo-400 p-2'
+          onClick={handleClick}
+        >
+          <img
+            className='w-4'
+            src='../../src/assets/icons/add.png'
+            alt='Plus icon'
+          />
+        </Button>
 
-      <Task></Task>
-    </div>
+        <Task></Task>
+      </div>
+    </>
   );
 };
 

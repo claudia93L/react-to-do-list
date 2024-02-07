@@ -32,9 +32,6 @@ const tasksSlice = createSlice({
         task.todos = task.todos.filter((todo) => todo.id !== todoId);
       }
     },
-    deleteTask: (state, action) => {
-      state.tasks = state.tasks.filter((task) => task.id !== action.payload);
-    },
     editTask: (state, action) => {
       const { taskId, taskName } = action.payload;
       const task = state.tasks.find((task) => task.id === taskId);
@@ -42,6 +39,9 @@ const tasksSlice = createSlice({
       if (task) {
         task.name = taskName;
       }
+    },
+    deleteTask: (state, action) => {
+      state.tasks = state.tasks.filter((task) => task.id !== action.payload);
     },
   },
 });

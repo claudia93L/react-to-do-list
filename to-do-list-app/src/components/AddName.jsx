@@ -17,23 +17,32 @@ const AddName = () => {
 
   return (
     <div className='text-center'>
-      <h2>Welcome... {usernameRedux ?? 'human'}!</h2>
-      <input
-        type='text'
-        ref={userNameRef}
-        className='border border-indigo-300 rounded-full px-2 mr-3'
-        placeholder='Write your name'
-      />
-      <Button
-        onClick={handleClick}
-        className='bg-indigo-300 rounded-full text-white transition ease-in-out hover:bg-indigo-400 p-2'
-      >
-        <img
-          className='w-5'
-          src='../src/assets/icons/edit.png'
-          alt='Search icon'
-        />
-      </Button>
+      <h2>
+        Welcome...
+        {!usernameRedux ? (
+          <span>
+            <input
+              type='text'
+              ref={userNameRef}
+              className='border border-indigo-300 rounded-full px-2 mr-3 w-24'
+              defaultValue={usernameRedux}
+              placeholder='Write your name'
+            />
+            <Button
+              onClick={handleClick}
+              className='bg-indigo-300 rounded-full text-white transition ease-in-out hover:bg-indigo-400 p-2'
+            >
+              <img
+                className='w-4'
+                src='../src/assets/icons/edit.png'
+                alt='Search icon'
+              />
+            </Button>
+          </span>
+        ) : (
+          <span> {usernameRedux}!</span>
+        )}
+      </h2>
     </div>
   );
 };

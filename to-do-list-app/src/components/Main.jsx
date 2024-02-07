@@ -1,12 +1,9 @@
 import Button from './Button';
-import style from './Main.module.css';
 import { Link } from 'react-router-dom';
 
 const Main = () => {
   return (
-    <div
-      className={` flex justify-center flex-col ${style.backgroundColor} min-h-screen min-w-screen`}
-    >
+    <div className='flex justify-center flex-col'>
       <div className='m-14 '>
         <img
           className='w-52 mx-auto '
@@ -20,12 +17,15 @@ const Main = () => {
             your day with our To-Do List app. Get started now!
           </p>
           <Link to={'/todolist'}>
-            <Button
-              className=
-              'bg-indigo-600 rounded-md py-2 px-4 text-white transition ease-in-out hover:bg-indigo-700 hover:scale-90'
-              
-            >
-              Get started
+            <Button className='bg-indigo-600 rounded-lg py-2 px-3 text-white transition ease-in-out hover:bg-indigo-700 hover:scale-90'>
+              <span className='flex justify-end'>
+                Get started
+                <img
+                  className='w-3 ml-3 object-contain'
+                  src='../../src/assets/icons/right-arrow.png'
+                  alt=''
+                />
+              </span>
             </Button>
           </Link>
         </div>
