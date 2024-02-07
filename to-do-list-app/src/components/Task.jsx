@@ -2,13 +2,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import Button from './Button';
 import { editTask, deleteTask } from '../reducers/tasksReducer';
 import { useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Task = () => {
   const tasks = useSelector((state) => state.tasks.tasks);
   const dispatch = useDispatch();
   const [editTaskId, setEditTaskId] = useState(null);
   const newTaskNameRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleEdit = (taskId) => {
     setEditTaskId(taskId); // Imposta l'ID del task attualmente in modifica
@@ -30,6 +31,11 @@ const Task = () => {
     dispatch(deleteTask(taskId));
   };
 
+  const openTask = (taskID, e) => {
+    e.stopPropagation();
+    navigate(`/todolist/${taskID}`);
+  };
+
   return (
     <div>
       {tasks.map((task) => {
@@ -37,24 +43,28 @@ const Task = () => {
           <div
             style={{ backgroundColor: task.color }}
             className='py-2 px-2 rounded flex justify-evenly rounded'
+            key={task.id}
           >
-            <Link to={`/todolist/${task.id}`}>
-              {editTaskId !== task.id ? (
-                <span className='w-40 mt-1 px-2 '>{task.name}</span>
-              ) : (
-                <input
-                  ref={newTaskNameRef}
-                  type='text'
-                  defaultValue={task.name}
-                  disabled={editTaskId !== task.id} // disabilita l'input se non è in modifica
-                  className='h-6 px-3 rounded-full mt-1 w-40 opacity-75'
-                ></input>
-              )}
-            </Link>
+            {editTaskId !== task.id ? (
+              <span
+                onClick={(e) => openTask(task.id, e)}
+                className='w-40 mt-1 px-2 '
+              >
+                {task.name}
+              </span>
+            ) : (
+              <input
+                ref={newTaskNameRef}
+                type='text'
+                defaultValue={task.name}
+                disabled={editTaskId !== task.id} // disabilita l'input se non è in modifica
+                className='h-6 px-3 rounded-full mt-1 w-40 opacity-75'
+              ></input>
+            )}
 
             {editTaskId !== task.id ? (
               <Button
-                onClick={() => handleEdit(task.id)}
+                onClick={(e) => handleEdit(task.id, e)}
                 className='bg-yellow-400 rounded-full text-white transition ease-in-out hover:bg-yellow-500 p-2 border border-yellow-600'
               >
                 <img
