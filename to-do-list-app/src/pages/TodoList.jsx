@@ -4,7 +4,7 @@ import TaskBoard from '../components/TaskBoard';
 
 const ToDoList = () => {
   return (
-    <div className='my-5 px-10 flex flex-col justify-center'>
+    <div className='mb-5 px-10 flex flex-col justify-center'>
       <Header path='/'></Header>
       <div className='name-section'>
         <AddName></AddName>

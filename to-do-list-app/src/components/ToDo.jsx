@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Header from './Header';
 import Button from './Button';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { addTodoToTask, removeTodoFromTask } from '../reducers/tasksReducer';
 
 const Todo = () => {

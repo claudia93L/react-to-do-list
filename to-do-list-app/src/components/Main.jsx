@@ -17,7 +17,7 @@ const Main = () => {
             your day with our To-Do List app. Get started now!
           </p>
           <Link to={'/todolist'}>
-            <Button className='bg-indigo-600 rounded-lg py-2 px-3 text-white transition ease-in-out hover:bg-indigo-700 hover:scale-90'>
+            <Button className='bg-indigo-500 rounded-lg py-2 px-3 text-white transition ease-in-out hover:bg-indigo-600 hover:scale-90'>
               <span className='flex justify-end'>
                 Get started
                 <img
