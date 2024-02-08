@@ -35,12 +35,12 @@ const Todo = () => {
 
   return (
     <>
-      <div className='my-5 px-10 flex flex-col'>
+      <div className=' px-10 flex flex-col'>
         <Header path='/todolist'></Header>
         {task && (
           <div
             key={task.id}
-            className='h-50 rounded p-3 flex-col opacity-80'
+            className='h-50 rounded p-3 flex-col opacity-80 transition ease-in-out scale-110 cursor-pointer'
             style={{ backgroundColor: task.color }}
           >
             <h3 className='text-2xl text-center'>{task.name}</h3>

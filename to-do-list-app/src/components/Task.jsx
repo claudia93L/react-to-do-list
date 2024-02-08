@@ -42,7 +42,7 @@ const Task = () => {
         return (
           <div
             style={{ backgroundColor: task.color }}
-            className='py-5 px-2 rounded flex justify-evenly rounded opacity-80 mb-5'
+            className='py-5 px-2 rounded flex justify-evenly rounded opacity-80 mb-5 cursor-pointer transition ease-in-out hover:scale-105'
             key={task.id}
           >
             {editTaskId !== task.id ? (
@@ -50,7 +50,10 @@ const Task = () => {
                 onClick={(e) => openTask(task.id, e)}
                 className='w-40 mt-1 px-2 '
               >
-                {task.name}
+                <span className='font-bold'>{task.name}</span>
+                {task.todos.length !== 0
+                  ? ` - ${task.todos.length} tasks`
+                  : null}
               </span>
             ) : (
               <input
@@ -65,7 +68,7 @@ const Task = () => {
             {editTaskId !== task.id ? (
               <Button
                 onClick={(e) => handleEdit(task.id, e)}
-                className='bg-yellow-400 rounded-full text-white transition ease-in-out hover:bg-yellow-500 p-2 border border-yellow-600'
+                className='bg-yellow-400 rounded-full text-white transition ease-in-out hover:bg-yellow-500 p-2 border border-yellow-600 opacity-75'
               >
                 <img
                   className='w-3'
@@ -76,7 +79,7 @@ const Task = () => {
             ) : (
               <Button
                 onClick={() => handleSave(task.id)}
-                className='bg-green-400 rounded-full text-white transition ease-in-out hover:bg-green-500 p-2 border border-green-900'
+                className='bg-green-400 rounded-full text-white transition ease-in-out hover:bg-green-500 p-2 border border-green-900 opacity-75'
               >
                 <img
                   className='w-3'
@@ -88,7 +91,7 @@ const Task = () => {
 
             <Button
               onClick={() => handleDelete(task.id)}
-              className='bg-red-400 rounded-full text-white transition ease-in-out hover:bg-red-500 p-2 border border-red-900'
+              className='bg-red-400 rounded-full text-white transition ease-in-out hover:bg-red-500 p-2 border border-red-900 opacity-75'
             >
               <img
                 className='w-3'

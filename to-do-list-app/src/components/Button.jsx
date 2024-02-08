@@ -1,5 +1,9 @@
 const Button = ({ children, ...rest }) => {
-  return <button {...rest}>{children}</button>;
+  return (
+    <button className='cursor-pointer' {...rest}>
+      {children}
+    </button>
+  );
 };
 
 export default Button;
